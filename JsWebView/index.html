@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="webview">
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+  <meta name="format-detection" content="telephone=no"/>
+  <meta name="format-detection" content="email=no"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"/>
+  <title>title</title>
+  <style>
+  .page {
+    text-align: center;
+    padding-top: 50%;
+  }
+  button {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  </style>
+</head>
+<body>
+<div class="page">
+  <button id="pushView">pushView</button>
+  <button id="popView">popView</button>
+  <button id="setTitle">setTitle</button>
+</div>
+<script>
+var $ = function(selector) {
+  return document.querySelector(selector);
+};
+var callback = function() {
+
+  $('#pushView').addEventListener('click', function() {
+    JSBridge.invoke('pushView', {
+      url: 'index.html'
+    });
+  }, false);
+
+  $('#popView').addEventListener('click', function() {
+    JSBridge.invoke('popView');
+  }, false);
+
+  $('#setTitle').addEventListener('click', function() {
+    JSBridge.invoke('setTitle', 'newTitle');
+  }, false);
+};
+document.addEventListener('JSBridgeReady', function() {
+  callback();
+}, false);
+</script>
+</body>
+</html>
