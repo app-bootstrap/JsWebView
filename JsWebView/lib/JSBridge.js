@@ -17,14 +17,14 @@
   };
 
   var _exec = function(host, querystring) {
-    var url = 'jsbrige://' + host;
+    var url = 'jsbridge://' + host;
 
     if (querystring) {
       var qs = [];
       for (var i in querystring) {
         qs.push(i + '=' + querystring[i]);
       }
-      url += '?' + qs.join('&');
+      url += '?' + encodeURIComponent(qs.join('&'));
     }
     global.location.href = url;
   };
@@ -75,9 +75,9 @@
 
   JSBridge.init();
 
-  global.JSBridge = JSBridge;
-
   var readyEvent = doc.createEvent('Events');
   readyEvent.initEvent('JSBridgeReady');
   doc.dispatchEvent(readyEvent);
+  
+  global.JSBridge = JSBridge;
 })(this);

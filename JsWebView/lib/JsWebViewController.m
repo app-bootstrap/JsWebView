@@ -108,7 +108,8 @@
 }
 
 - (NSMutableDictionary *)parseQuery:(NSString *)query {
-    NSArray *queryArray = [query componentsSeparatedByString:@"&"];
+    NSString *temp = [query stringByReplacingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
+    NSArray *queryArray = [temp componentsSeparatedByString:@"&"];
     NSInteger count = [queryArray count];
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
 
@@ -123,7 +124,6 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     NSURL *url = request.mainDocumentURL;
     NSString *scheme = request.URL.scheme;
-    //NSString *absoluteString = [url absoluteString];
     NSString *host = [url host];
     NSString *query = [url query];
     NSArray *methods = [NSArray arrayWithObjects:@"setTitle", @"pushView", @"popView", nil];

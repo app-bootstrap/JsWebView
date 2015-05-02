@@ -31,24 +31,26 @@ var $ = function(selector) {
   return document.querySelector(selector);
 };
 var callback = function() {
-
   $('#pushView').addEventListener('click', function() {
     JSBridge.invoke('pushView', {
       url: 'index.html'
     });
   }, false);
-
   $('#popView').addEventListener('click', function() {
     JSBridge.invoke('popView');
   }, false);
-
   $('#setTitle').addEventListener('click', function() {
     JSBridge.invoke('setTitle', 'newTitle');
   }, false);
 };
-document.addEventListener('JSBridgeReady', function() {
+
+if (typeof JSBridge !== 'undefined') {
   callback();
-}, false);
+} else {
+  document.addEventListener('JSBridgeReady', function() {
+    callback();
+  }, false);
+}
 </script>
 </body>
 </html>

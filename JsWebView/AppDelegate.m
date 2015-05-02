@@ -17,7 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     JsWebViewController *view = [[JsWebViewController alloc] init];
-    NSString* url = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
+    NSString *url = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
     view.url = url;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController: view];
     self.window.rootViewController = nav;

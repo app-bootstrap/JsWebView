@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#define CustomProtocolScheme @"jsbrige"
+#define CustomProtocolScheme @"jsbridge"
 
 @interface JsWebViewController: UIViewController
 @property (strong, nonatomic) NSString *url;
