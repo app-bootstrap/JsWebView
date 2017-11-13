@@ -13,13 +13,13 @@ copy `JsWebViewController.h`, `JsWebViewController.m` into your project.
 
 Add the following import to the top of the file:
 
-```objc
+``` objc
 #import "JsWebViewController.h"
 ```
 
 ### Configuration
 
-```objc
+``` objc
 JsWebViewController *view = [[JsWebViewController alloc] init];
 ...
 view.url = url;
@@ -27,7 +27,7 @@ view.url = url;
 
 ### Usage
 
-```js
+``` javascript
 var callback = function() {
 
   $('#pushView').addEventListener('click', function() {
